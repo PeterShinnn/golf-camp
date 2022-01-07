@@ -1,0 +1,27 @@
+nav {
+    width: 80%;
+    height: 65px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+}
+
+.navLinks {
+    text-decoration: none;
+    margin: 15px;
+    color: black;
+}
+
+.logo-link{
+    text-decoration: none;
+    color: rgb(40, 64, 12);
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.active{
+    color: red;
+}
