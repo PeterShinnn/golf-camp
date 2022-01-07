@@ -3,7 +3,9 @@ import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
 import Slogan from '../Slogan';
+import SearchForm from '../SearchForm';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -30,8 +32,10 @@ function Navigation({ isLoaded }) {
           <NavLink to="/near" className="navLinks">Near Me</NavLink>
           <NavLink to="/about" className="navLinks">About</NavLink>
           <NavLink to="/earn" className="navLinks">Earn Birdy</NavLink>
+          <NavLink to="#" className="navLinks">Demo</NavLink>
           <LoginFormModal />
-          <NavLink to="/signup" className="navLinks">Sign Up</NavLink>
+          <SignupFormModal />
+          {/* <NavLink to="/signup" className="navLinks">Sign Up</NavLink> */}
         </span>
       </>
     );
@@ -43,9 +47,10 @@ function Navigation({ isLoaded }) {
         <Link exact to="/" className="logo-link">GOLFCAMP</Link>
         {isLoaded && sessionLinks}
       </nav>
-      <navHeader>
+      <div className="nav-content">
         <Slogan />
-      </navHeader>
+        <SearchForm/>
+      </div>
     </>
   );
 }

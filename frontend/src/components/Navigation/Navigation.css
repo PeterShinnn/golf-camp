@@ -9,6 +9,13 @@ nav {
     position: sticky;
 }
 
+.nav-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .navLinks {
     text-decoration: none;
     margin: 15px;
