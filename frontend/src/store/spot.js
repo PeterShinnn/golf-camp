@@ -17,11 +17,11 @@ export const CreateCourse = (payload) => async dispatch => {
     //console.log(payload);
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
     });
     if (response.ok){
         const course = await response.json();
+        //console.log('!!!!!!!!!!', course.spot.id);
         dispatch(addSpot(course));
         return course;
     }
