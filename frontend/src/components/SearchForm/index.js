@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DateTimePicker from 'react-datetime-picker';
+import DatePicker from 'react-date-picker';
 import IMAGES from "../../images";
 import './SearchForm.css';
 
@@ -48,7 +48,7 @@ function SearchForm() {
                 </div>
                 <div className="form-item">
                     <label>DATES</label>
-                    <DateTimePicker className="form-inputs" value={startDate} onChange={(date) => setStartDate(date)} />
+                    <DatePicker className="form-inputs" value={startDate} onChange={(date) => setStartDate(date)} />
                 </div>
                 <div className="form-item">
                     <label>GUESTS </label>

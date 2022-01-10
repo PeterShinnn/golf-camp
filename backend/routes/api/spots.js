@@ -1,5 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { validateSpotForm } = require('../authentication/spotAuth');
 
 const { Spot } = require('../../db/models');
 
@@ -14,7 +15,7 @@ router.get('/', asyncHandler(async (req,res) => {
 
 
 // Create Spot
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', validateSpotForm, asyncHandler(async (req, res) => {
     const { name, address, city, state, country, lat, lng, price, userId} = req.body;
 
     const spot = await Spot.create({
@@ -34,7 +35,7 @@ router.post('/', asyncHandler(async (req, res) => {
 }))
 
 // Updates Spot
-router.put('/:id', asyncHandler(async (req,res) => {
+router.put('/:id', validateSpotForm, asyncHandler(async (req,res) => {
     const { name, address, city, state, country, lat, lng, price, userId} = req.body;
 
     const spot = await Spot.update({
