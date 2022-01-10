@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import SpotFormModal from '../SpotFormModal';
 import Slogan from '../Slogan';
 import SearchForm from '../SearchForm';
 import './Navigation.css';
@@ -20,6 +21,7 @@ function Navigation({ isLoaded }) {
           <NavLink to="/trips" className="navLinks">Trips</NavLink>
           <NavLink to="/saves" className="navLinks">Saves</NavLink>
           <NavLink to="/inbox" className="navLinks">Inbox</NavLink>
+          <SpotFormModal/>
           <ProfileButton user={sessionUser} />
         </span>
       </>
