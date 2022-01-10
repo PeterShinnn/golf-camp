@@ -32,7 +32,7 @@ function Navigation({ isLoaded }) {
           <NavLink to="/near" className="navLinks">Near Me</NavLink>
           <NavLink to="/about" className="navLinks">About</NavLink>
           <NavLink to="/earn" className="navLinks">Earn Birdy</NavLink>
-          <NavLink to="#" className="navLinks">Demo</NavLink>
+          <NavLink to="/demo" className="navLinks">Demo</NavLink>
           <LoginFormModal />
           <SignupFormModal />
           {/* <NavLink to="/signup" className="navLinks">Sign Up</NavLink> */}
@@ -44,8 +44,10 @@ function Navigation({ isLoaded }) {
   return (
     <>
       <nav>
-        <Link exact to="/" className="logo-link">GOLFCAMP</Link>
-        {isLoaded && sessionLinks}
+        <div className='nav-bar'>
+          <Link to="/" className="logo-link">GOLFCAMP</Link>
+          {isLoaded && sessionLinks}
+        </div>
       </nav>
       <div className="nav-content">
         <Slogan />

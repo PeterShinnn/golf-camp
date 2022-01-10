@@ -12,25 +12,45 @@ function SearchForm() {
     //const maxDate = new Date(startDate.getTime() + + 7 * 24 * 60 * 60 * 1000); 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const reservation = {
+            location,
+            startDate,
+            guestNum
+        }
+
+        console.log(reservation);
+
+        reset();
+    }
+
+    const reset = () => {
+        setLocation("")
+        setStartDate(new Date());
+        setGuestNum(2);
     }
 
     return (
-        <>
+        <div className="form-div">
             <form className="golf-form" onSubmit={handleSubmit}>
-                <span className="form-item">
+                <div className="form-item">
                     <label>WHERE TO?</label>
-                    <input className="form-inputs"
-                        type="text"
-                        name="location"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                    />
-                </span>
-                <span className="form-item">
+                    <span className="search-box">
+                        <i className="fas fa-search"></i>
+                        <input className="form-inputs"
+                            type="text"
+                            name="location"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            placeholder="Try Sunnyvale"
+                        />
+                    </span>
+                </div>
+                <div className="form-item">
                     <label>DATES</label>
                     <DateTimePicker className="form-inputs" value={startDate} onChange={(date) => setStartDate(date)} />
-                </span>
-                <span className="form-item">
+                </div>
+                <div className="form-item">
                     <label>GUESTS </label>
                     <select className="form-inputs" value={guestNum} onChange={(e) => setGuestNum(e.target.value)}>
                         <option>1</option>
@@ -38,13 +58,13 @@ function SearchForm() {
                         <option>3</option>
                         <option>4</option>
                     </select>
-                </span>
-                <button className="formSubmitBtn" type="submit"><i className="fas fa-search"></i></button>
+                </div>
+                <button className="formSubmitBtn" type="submit"><i className="fas fa-search submitBtn"></i></button>
             </form>
-            <div>
-                <img className="search-splash" src={IMAGES.home} alt="golf-green-picture" />
+            <div className="search-splash">
+                <img className="search-splash-img" src={IMAGES.home} alt="golf-green" />
             </div>
-        </>
+        </div>
     )
 }
 

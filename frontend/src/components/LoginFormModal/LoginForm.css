@@ -1,0 +1,14 @@
+.login-form{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.login-form h2{
+  text-align: center;
+}
+
+.login-form label{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
