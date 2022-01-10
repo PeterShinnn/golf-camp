@@ -1,0 +1,58 @@
+.golf-form{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.search-splash{
+    padding: 40px 0;
+}
+
+.search-splash-img{
+    height: auto;
+    max-width: 80vw;
+    border-radius: 25px;
+}
+
+.form-div{
+    position: relative;
+}
+
+.golf-form{
+    display: grid;
+    position: absolute;
+    grid-template-columns: .9fr .9fr .9fr .1fr;
+    border: 1px solid rgb(229, 234, 223);
+    background-color: rgb(243, 242, 239);
+    box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px 0px;
+    border-radius: 40px;
+    padding: 20px;
+    align-items: center;
+    top: 40px;
+    width: 80%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.form-item{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.form-inputs{
+    background-color: white;
+}
+
+.formSubmitBtn{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: aquamarine;
+    margin-left: 10px;
+}
+
+
+.submitBtn{
+    color: white;
+}
