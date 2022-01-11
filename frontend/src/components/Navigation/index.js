@@ -5,8 +5,6 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import SpotFormModal from '../SpotFormModal';
-import Slogan from '../Slogan';
-import SearchForm from '../SearchForm';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -51,10 +49,6 @@ function Navigation({ isLoaded }) {
           {isLoaded && sessionLinks}
         </div>
       </nav>
-      <div className="nav-content">
-        <Slogan />
-        <SearchForm/>
-      </div>
     </>
   );
 }
