@@ -15,7 +15,6 @@ const load = list => ({
 
 export const getSpots = () => async dispatch => {
     const response = await csrfFetch('/api/spots');
-
     if (response.ok) {
         const list = await response.json();
         dispatch(load(list));
@@ -28,19 +27,21 @@ export const CreateCourse = (payload) => async dispatch => {
         method: 'POST',
         body: JSON.stringify(payload)
     });
-    if (response.ok){
+    if (response.ok) {
         const course = await response.json();
         //console.log('!!!!!!!!!!', course.spot.id);
+        const img = await csrfFetch('/api/images',{
+            method: 'POST',
+            body: JSON.stringify({url: payload.url, spotId:course.spot.id})
+        });
         dispatch(addSpot(course));
         return course;
     }
-} 
+}
 
-const initialState = {list:[]};
+const initialState = { list: [] };
 
 const courseReducer = (state = initialState, action) => {
-    console.log("why the fuck am i not printing")
-    console.log("!!!!!!!!!!!!", action.list)
     switch (action.type) {
         case LOAD:
             return {
@@ -48,7 +49,7 @@ const courseReducer = (state = initialState, action) => {
                 list: action.list
             }
         case ADD_SPOT:
-            return {...state};
+            return { ...state };
         default:
             return state;
     }

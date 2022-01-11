@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch,useSelector } from "react-redux"; //useDispatch,
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 import { CreateCourse } from "../../store/spot";
 
 function SpotForm() {
@@ -18,7 +18,7 @@ function SpotForm() {
     const [price, setPrice] = useState(0.00);
     const [errors, setErrors] = useState([]);
 
-    if (!sessionUser) return <Redirect to="/" />;
+    //if (!sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();

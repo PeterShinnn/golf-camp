@@ -7,10 +7,11 @@ const router = express.Router();
 
 // Create Spot
 router.post('/', asyncHandler(async (req, res) => {
-    // const { url } = req.body
-    // const image = await Image.create({ url })
+    const { url, spotId } = req.body
+    const image = await Image.create({ url, spotId })
 
-    return
+    res.status(201);
+    res.json({ image });
 }))
 
 module.exports = router;

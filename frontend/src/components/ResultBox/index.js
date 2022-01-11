@@ -1,9 +1,9 @@
-function ResultBox({ Location, Date, Guest }) {
+function ResultBox({ Course }) {
 
     return(
         <div className="spot-card">
             <div className="result-box">
-                mew
+                <h2>{Course.name}</h2>
             </div>
         </div>
     )

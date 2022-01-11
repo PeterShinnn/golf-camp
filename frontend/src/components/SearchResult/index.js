@@ -1,33 +1,39 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from "react-router-dom";
+import { Route } from 'react-router-dom';
+//import { useLocation } from "react-router-dom";
 
 import { getSpots } from '../../store/spot';
 import ResultBox from '../ResultBox';
+import './SearchResult.css';
 
 function SearchResult() {
-    const location = useLocation();
+    //const location = useLocation(); //Gets the search query prop
     const dispatch = useDispatch();
 
-    const courses = useSelector(state => state.action);
-    //console.log(courses)
+    const courses = useSelector(state => state.course.list);
+
     useEffect(() => {
         dispatch(getSpots());
     }, [dispatch])
 
-    // if (!spot) {
-    //     return null;
-    // }
+    if (!courses) {
+        return null;
+    }
 
     return (
         <>
             <main>
-                <h2>hello world</h2>
-                <ResultBox 
-                    Location={location.state.location}
-                    Date={location.state.startDate}
-                    Guest={location.state.guestNum}
-                />
+                <div className='container'>
+                    <div className='course-card-container'>
+                        {courses?.map((course) => (
+                            <Route path='/spot/:spotId'>
+                                <ResultBox key={course.id} Course={course} />
+                            </Route>
+                        ))}
+                    </div>
+                    <div className='map'>Map</div>
+                </div>
             </main>
         </>
     )
