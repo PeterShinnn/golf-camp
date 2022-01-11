@@ -17,8 +17,7 @@ function Navigation({ isLoaded }) {
       <>
         <span>
           <NavLink to="/trips" className="navLinks">Trips</NavLink>
-          <NavLink to="/saves" className="navLinks">Saves</NavLink>
-          <NavLink to="/inbox" className="navLinks">Inbox</NavLink>
+          <NavLink to="/owned" className="navLinks">Your Spots</NavLink>
           <SpotFormModal/>
           <ProfileButton user={sessionUser} />
         </span>

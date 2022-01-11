@@ -29,13 +29,12 @@ export const CreateCourse = (payload) => async dispatch => {
     });
     if (response.ok) {
         const course = await response.json();
-        //console.log('!!!!!!!!!!', course.spot.id);
         const img = await csrfFetch('/api/images',{
             method: 'POST',
             body: JSON.stringify({url: payload.url, spotId:course.spot.id})
         });
         dispatch(addSpot(course));
-        return course;
+        return {course, img};
     }
 }
 
