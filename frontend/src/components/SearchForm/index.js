@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import DatePicker from 'react-date-picker';
 import IMAGES from "../../images";
 import './SearchForm.css';
@@ -7,21 +8,27 @@ function SearchForm() {
     const [location, setLocation] = useState("");
     const [startDate, setStartDate] = useState(new Date());
     const [guestNum, setGuestNum] = useState(2);
+    const history = useHistory();
 
     // implement in the future if you have time to get tee time only week ahead
     //const maxDate = new Date(startDate.getTime() + + 7 * 24 * 60 * 60 * 1000); 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const reservation = {
-            location,
-            startDate,
-            guestNum
-        }
+        // const reservation = {
+        //     location,
+        //     startDate,
+        //     guestNum
+        // }
 
-        console.log(reservation);
+        //console.log(reservation);
 
         reset();
+        history.push({
+            pathname: '/search/result',
+            search: `?query=${location}&date=${startDate}&guest=${guestNum}`,
+            state: { location, startDate, guestNum }
+        });
     }
 
     const reset = () => {
@@ -42,7 +49,7 @@ function SearchForm() {
                             name="location"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
-                            placeholder="Try Sunnyvale"
+                            placeholder="Search by state/City (e.g. PA)"
                         />
                     </span>
                 </div>

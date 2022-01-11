@@ -9,13 +9,12 @@ const router = express.Router();
 // Get all spots
 router.get('/', asyncHandler(async (req,res) => {
     const spots = await Spot.findAll();
-
-    res.json({ spots });
+    res.json(spots);
 }));
 
 
 // Create Spot
-router.post('/', validateSpotForm, asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     const { name, address, city, state, country, lat, lng, price, userId} = req.body;
 
     const spot = await Spot.create({
@@ -31,11 +30,11 @@ router.post('/', validateSpotForm, asyncHandler(async (req, res) => {
     });
 
     res.status(201);
-    res.json({ spot });
+    res.json({spot});
 }))
 
 // Updates Spot
-router.put('/:id', validateSpotForm, asyncHandler(async (req,res) => {
+router.put('/:id', asyncHandler(async (req,res) => {
     const { name, address, city, state, country, lat, lng, price, userId} = req.body;
 
     const spot = await Spot.update({
