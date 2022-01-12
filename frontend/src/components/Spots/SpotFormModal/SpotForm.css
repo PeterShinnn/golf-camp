@@ -1,0 +1,22 @@
+.spot-form{
+  font-size: 1.3rem;;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.spot-form h2{
+  text-align: center;
+}
+
+.spot-form label{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: justify;
+}
+
+.spot-form input{
+  text-align: center;
+  height: 27px;
+  margin: 3px;
+}

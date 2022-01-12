@@ -1,0 +1,58 @@
+
+.social-container {
+    max-width: 1170px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 5px;
+}
+
+.person {
+    margin: 0 auto;
+}
+
+.person h4 {
+    font-size: 18px;
+    color: #8b8b94;
+}
+
+.person ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.person ul li {
+    padding: 5px;
+}
+
+.person ul li a {
+    text-decoration: none;
+    color: #8b8b94;
+}
+
+.person ul li a:hover {
+    color: rgb(68, 68, 68);
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.copyright p {
+    color: #8b8b94;
+    margin-right: 10px;
+}
+
+.copyright a {
+    margin: 0 5px;
+    color: #8b8b94;
+    text-decoration: none;
+}

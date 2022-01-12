@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"; //useDispatch,
 import { useParams } from "react-router-dom";
 import { editCourse } from "../../../store/spot";
 import { getSingleSpot } from "../../../store/spot";
+import './EditModal.css';
 
 function EditForm({ showModal }) {
 
@@ -22,11 +23,20 @@ function EditForm({ showModal }) {
     const [price, setPrice] = useState(spot.price);
     const [errors, setErrors] = useState([]);
 
-    //if (!sessionUser) return <Redirect to="/" />;
-
     useEffect(() => {
         dispatch(getSingleSpot(id));
-    }, [dispatch, id]);
+        const error = []
+        
+        if(url.length < 5) error.push("Please Enter URL");
+        if(name.length < 3) error.push("Please enter valid name");
+        if(address.length < 4) error.push("Please Enter valid address");
+        if(state.length != 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
+        if(city.length < 3) error.push("Please enter valid city name");
+        if(country.length < 4) error.push("Please enter a valid country name");
+
+        setErrors(error);
+    }, [dispatch, id,url,name,address,city,state,country]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -55,7 +65,7 @@ function EditForm({ showModal }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="edit-spot-form" onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -65,6 +75,7 @@ function EditForm({ showModal }) {
                     type="text"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
+                    placeholder="Image URL (Required)"
                     required
                 />
             </label>
@@ -74,6 +85,7 @@ function EditForm({ showModal }) {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    placeholder="Name (Required)"
                     required
                 />
             </label>
@@ -83,6 +95,7 @@ function EditForm({ showModal }) {
                     type="text"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
+                    placeholder="Address (Required)"
                     required
                 />
             </label>
@@ -92,6 +105,7 @@ function EditForm({ showModal }) {
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
+                    placeholder="City (Required)"
                     required
                 />
             </label>
@@ -101,6 +115,7 @@ function EditForm({ showModal }) {
                     type="text"
                     value={state}
                     onChange={(e) => setStatee(e.target.value)}
+                    placeholder="State"
                 />
             </label>
             <label>
@@ -109,6 +124,7 @@ function EditForm({ showModal }) {
                     type="text"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
+                    placeholder="Country (Required)"
                     required
                 />
             </label>
@@ -134,9 +150,10 @@ function EditForm({ showModal }) {
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    placeholder="Price"
                 />
             </label>
-            <button type="submit">Edit</button>
+            <button type="submit" disabled={errors.length ? true:false}>Edit</button>
         </form>
     );
 }
