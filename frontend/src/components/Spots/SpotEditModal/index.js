@@ -11,7 +11,7 @@ function SpotEditModal() {
             <button onClick={() => setShowModal(true)}>Edit</button >
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <SpotEditForm />
+                    <SpotEditForm showModal={setShowModal}/>
                 </Modal>
             )}
         </>

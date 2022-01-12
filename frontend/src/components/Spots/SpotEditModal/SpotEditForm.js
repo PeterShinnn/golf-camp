@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { editCourse } from "../../../store/spot";
 import { getSingleSpot } from "../../../store/spot";
 
-function EditForm() {
+function EditForm({ showModal }) {
+
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const spot = useSelector(state => state.course.spot);
@@ -14,7 +15,7 @@ function EditForm() {
     const [name, setName] = useState(spot.name);
     const [address, setAddress] = useState(spot.address);
     const [city, setCity] = useState(spot.city ? spot.city:"");
-    const [statee, setStatee] = useState(spot.state);
+    const [state, setStatee] = useState(spot.state);
     const [country, setCountry] = useState(spot.country);
     const [lat, setLat] = useState(spot.lat);
     const [lng, setLng] = useState(spot.lng);
@@ -36,7 +37,7 @@ function EditForm() {
             name,
             address,
             city,
-            statee,
+            state,
             country,
             lat,
             lng,
@@ -44,7 +45,12 @@ function EditForm() {
             userId: sessionUser.id,
             imgId: spot.Images[0].id
         }
-        return dispatch(editCourse(courseData))
+        
+        dispatch(editCourse(courseData)).catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+        });
+        showModal(false);
         //console.log(data);
     };
 
@@ -93,7 +99,7 @@ function EditForm() {
                 State
                 <input
                     type="text"
-                    value={statee}
+                    value={state}
                     onChange={(e) => setStatee(e.target.value)}
                 />
             </label>
