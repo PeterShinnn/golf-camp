@@ -1,28 +1,28 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
-import { getSingleSpot } from '../../../store/spot';
+import { getSingleSpot, deleteCourse } from '../../../store/spot';
 import SpotEditModal from '../SpotEditModal';
 
 import "./SpotDetail.css";
 
 function SpotDetail() {
   const sessionUser = useSelector(state => state.session.user);
-  const spot = useSelector(state => state.course.list);
+  const spot = useSelector(state => state.course.spot);
   
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSingleSpot(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   if (!sessionUser) return <Redirect to="/" />
 
   return (
     <main className="spot-listing">
       { spot.Images?.map( img => (
-        <img src={img.url}/>
+        <img key={img.url} src={img.url} alt="golf-course-pic"/>
       ))}
       <div className="spot-detail-content">
         <h2>{spot.name}</h2>
@@ -33,7 +33,7 @@ function SpotDetail() {
         <h3>{spot.lng}</h3>
         <h3>{spot.price}</h3>
         <SpotEditModal/>
-        <button>Delete</button>
+        <button onClick={() => dispatch(deleteCourse(id))}>Delete</button>
       </div>
     </main>
   );

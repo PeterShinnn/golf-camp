@@ -1,0 +1,24 @@
+.owned-container{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.owned-spot-course-card-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.owned-grid-item{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 320px;
+    height: 320px;
+    border: 1px solid black;
+    border-radius: 25px;
+}

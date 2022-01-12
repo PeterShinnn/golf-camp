@@ -14,23 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   Spot.associate = function(models) {
     // associations can be defined here
     Spot.belongsTo(models.User , { foreignKey: 'userId'});
-    Spot.hasMany(models.Image , { foreignKey: 'spotId', onDelete: 'CASCADE'});
+    Spot.hasMany(models.Image , { foreignKey: 'spotId', onDelete: 'CASCADE', hooks: true});
     Spot.hasMany(models.Reservation , { foreignKey: 'spotId'});
   };
-
-  // Spot.createSpot = async function({ name,address,city,state,country,lat,lng,price,userId }) {
-  //   const spot = await Spot.create({
-  //     name,
-  //     address,
-  //     city,
-  //     state,
-  //     country,
-  //     lat,
-  //     lng,
-  //     price,
-  //     userId
-  //   });
-  //   return await Spot.scope('')
-  // }
   return Spot;
 };
