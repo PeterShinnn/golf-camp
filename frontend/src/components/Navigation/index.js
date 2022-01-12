@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
-import SpotFormModal from '../SpotFormModal';
+import LoginFormModal from '../Login/LoginFormModal';
+import SignupFormModal from '../Signup/SignupFormModal';
+import SpotFormModal from '../Spots/SpotFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -17,8 +17,7 @@ function Navigation({ isLoaded }) {
       <>
         <span>
           <NavLink to="/trips" className="navLinks">Trips</NavLink>
-          <NavLink to="/saves" className="navLinks">Saves</NavLink>
-          <NavLink to="/inbox" className="navLinks">Inbox</NavLink>
+          <NavLink to="/owned" className="navLinks">Your Spots</NavLink>
           <SpotFormModal/>
           <ProfileButton user={sessionUser} />
         </span>

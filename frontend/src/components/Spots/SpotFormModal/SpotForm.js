@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch,useSelector } from "react-redux"; //useDispatch,
 //import { Redirect } from "react-router-dom";
-import { CreateCourse } from "../../store/spot";
+import { CreateCourse } from "../../../store/spot";
 
 function SpotForm() {
     //const dispatch = useDispatch();
