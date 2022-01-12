@@ -1,29 +1,38 @@
-import React, { useState } from "react";
-import { useDispatch,useSelector } from "react-redux"; //useDispatch,
-//import { Redirect } from "react-router-dom";
-import { editCourse } from '../SpotEditModal';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"; //useDispatch,
+import { Redirect, useParams } from "react-router-dom";
+import { editCourse } from "../../../store/spot";
+import { getSingleSpot } from "../../../store/spot";
 
-function SpotEditForm() {
+function EditForm() {
     //const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    const spot = useSelector(state => state.course.list);
+    const { id } = useParams();
+
     const dispatch = useDispatch();
-    const [url, setUrl] = useState("");
-    const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [statee, setStatee] = useState("");
-    const [country, setCountry] = useState("");
-    const [lat, setLat] = useState(0);
-    const [lng, setLng] = useState(0);
-    const [price, setPrice] = useState(0.00);
+    const [url, setUrl] = useState(spot.Images[0].url);
+    const [name, setName] = useState(spot.name);
+    const [address, setAddress] = useState(spot.address);
+    const [city, setCity] = useState(spot.city);
+    const [statee, setStatee] = useState(spot.state);
+    const [country, setCountry] = useState(spot.country);
+    const [lat, setLat] = useState(spot.lat);
+    const [lng, setLng] = useState(spot.lng);
+    const [price, setPrice] = useState(spot.price);
     const [errors, setErrors] = useState([]);
 
     //if (!sessionUser) return <Redirect to="/" />;
+
+    useEffect(() => {
+        dispatch(getSingleSpot(id));
+    }, [dispatch]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const data = {
+            id,
             url,
             name,
             address,
@@ -35,7 +44,7 @@ function SpotEditForm() {
             price,
             userId: sessionUser.id
         }
-        dispatch(editCourse(data));
+        return dispatch(editCourse(data));
         //console.log(data);
     };
 
@@ -126,4 +135,4 @@ function SpotEditForm() {
     );
 }
 
-export default SpotEditForm;
+export default EditForm;
