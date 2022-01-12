@@ -15,7 +15,6 @@ router.get('/', asyncHandler(async (req,res) => {
     res.json(spots);
 }));
 
-
 // Create Spot
 router.post('/', asyncHandler(async (req, res) => {
     const { name, address, city, state, country, lat, lng, price, userId} = req.body;
@@ -35,6 +34,15 @@ router.post('/', asyncHandler(async (req, res) => {
     res.status(201);
     res.json({spot});
 }))
+
+// Get one spot
+router.get('/:id', asyncHandler(async (req,res) => {
+    const spot = await Spot.findOne({
+        include: Image,
+        where: { id: req.params.id}
+    })
+    res.json(spot);
+}));
 
 // Updates Spot
 router.put('/:id', asyncHandler(async (req,res) => {
@@ -56,6 +64,7 @@ router.put('/:id', asyncHandler(async (req,res) => {
     res.status(200);
 }))
 
+//Gets images related to spot ID
 router.get('/:id/images', asyncHandler(async (req,res) => {
     const urlImg = await Image.findAll({
         where: {spotId: req.params.id}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import DatePicker from 'react-date-picker';
-import IMAGES from "../../images";
+import IMAGES from "../../../images";
 import './SearchForm.css';
 
 function SearchForm() {

@@ -1,0 +1,12 @@
+.carousel{
+    height: 500px;
+    margin: auto;
+}
+
+.carousel .thumb{
+    display:none;
+}
+
+.spot-detail-content{
+    margin-top: 30px;;
+}

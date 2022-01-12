@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Slogan from '../Slogan';
-import SearchForm from '../SearchForm';
+import SearchForm from '../../Search/SearchForm';
 
 function HeaderContent() {
 

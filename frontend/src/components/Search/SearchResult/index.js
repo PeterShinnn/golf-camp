@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 //import { useLocation } from "react-router-dom";
 
-import { getSpots } from '../../store/spot';
-import ResultBox from '../ResultBox';
+import { getSpots } from '../../../store/spot';
+import ResultBox from '../../Spots/ResultBox';
 import './SearchResult.css';
 
 function SearchResult() {
