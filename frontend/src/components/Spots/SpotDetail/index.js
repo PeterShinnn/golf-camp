@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import { getSingleSpot } from '../../../store/spot';
+import SpotEditModal from '../SpotEditModal';
 
 import "./SpotDetail.css";
 
@@ -31,7 +32,7 @@ function SpotDetail() {
         <h3>{spot.lat}</h3>
         <h3>{spot.lng}</h3>
         <h3>{spot.price}</h3>
-        <button>Edit</button>
+        <SpotEditModal/>
         <button>Delete</button>
       </div>
     </main>

@@ -59,7 +59,7 @@ export const CreateCourse = (payload) => async dispatch => {
 }
 
 export const editCourse = (payload) => async dispatch => {
-    const response = await csrfFetch('/api/spots', {
+    const response = await csrfFetch(`/api/spots/${payload.id}`, {
         method: 'PUT',
         body: JSON.stringify(payload)
     });
@@ -77,16 +77,16 @@ export const editCourse = (payload) => async dispatch => {
 const initialState = { list: [] };
 
 const courseReducer = (state = initialState, action) => {
+    console.log(state.list, action)
     switch (action.type) {
         case LOAD:
-            return {
-                ...state,
-                list: action.list
-            }
+            return { ...state, list: action.list }
         case ADD_SPOT:
-            return { ...state };
+            return { ...state, list: action.course };
         case LOAD_ONE:
             return { ...state, list: action.course };
+        case EDIT_SPOT:
+            return { ...state, list: action.course }
         default:
             return state;
     }
