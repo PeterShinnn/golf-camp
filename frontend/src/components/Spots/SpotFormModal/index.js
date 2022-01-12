@@ -11,7 +11,7 @@ function SpotFormModal() {
             <Link className="navLinks" to="#" onClick={() => setShowModal(true)}>Host a Spot</Link>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <SpotForm />
+                    <SpotForm showModal={setShowModal}/>
                 </Modal>
             )}
         </>

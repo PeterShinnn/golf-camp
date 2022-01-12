@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { Modal } from '../../../context/Modal';
 import SpotEditForm from './SpotEditForm';
 
@@ -11,7 +11,7 @@ function SpotEditModal() {
             <button onClick={() => setShowModal(true)}>Edit</button >
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <SpotEditForm />
+                    <SpotEditForm showModal={setShowModal}/>
                 </Modal>
             )}
         </>

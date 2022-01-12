@@ -1,42 +1,50 @@
 import React, { useState } from "react";
-import { useDispatch,useSelector } from "react-redux"; //useDispatch,
-//import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"; //useDispatch,
+import { Redirect, useHistory } from "react-router-dom";
 import { CreateCourse } from "../../../store/spot";
 
-function SpotForm() {
-    //const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+function SpotForm({ showModal }) {
+
     const dispatch = useDispatch();
+    const history = useHistory();
+    const sessionUser = useSelector((state) => state.session.user);
     const [url, setUrl] = useState("");
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
-    const [statee, setStatee] = useState("");
+    const [state, setStatee] = useState("");
     const [country, setCountry] = useState("");
     const [lat, setLat] = useState(0);
     const [lng, setLng] = useState(0);
     const [price, setPrice] = useState(0.00);
     const [errors, setErrors] = useState([]);
 
-    //if (!sessionUser) return <Redirect to="/" />;
+    if (!sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const data = {
+        const courseData = {
             url,
             name,
             address,
             city,
-            statee,
+            state,
             country,
             lat,
             lng,
             price,
             userId: sessionUser.id
         }
-        dispatch(CreateCourse(data));
-        //console.log(data);
+        
+        dispatch(CreateCourse(courseData))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+        
+        showModal(false);
+        history.push('/owned');
     };
 
     return (
@@ -84,7 +92,7 @@ function SpotForm() {
                 State
                 <input
                     type="text"
-                    value={statee}
+                    value={state}
                     onChange={(e) => setStatee(e.target.value)}
                 />
             </label>

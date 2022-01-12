@@ -14,11 +14,11 @@ router.get('/', asyncHandler(async (req,res) => {
         include: Image
     });
     //const spots = spotService.getAllSpots();
-    res.json(spots);
+    return res.json(spots);
 }));
 
 // Create Spot
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res, next) => {
     const { name, address, city, state, country, lat, lng, price, userId} = req.body;
 
     const spot = await Spot.create({
@@ -33,39 +33,65 @@ router.post('/', asyncHandler(async (req, res) => {
         userId
     });
 
+    if (!spot) {
+        const err = new Error('Spot Entry Failed');
+        err.status = 401;
+        err.title = 'Spot Entry Failed';
+        err.errors = ['The provided informations were invalid.'];
+        return next(err);
+    }
+
     res.status(201);
-    res.json({spot});
+    return res.json({spot});
 }))
 
 // Get one spot
-router.get('/:id(\\d+)', asyncHandler(async (req,res) => {
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const spot = await Spot.findOne({
         include: Image,
         where: { id: req.params.id}
     })
-    res.json(spot);
+    return res.json(spot);
 }));
 
 // Updates Spot
-router.put('/:id(\\d+)', asyncHandler(async (req,res) => {
+router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     //const { name, address, city, state, country, lat, lng, price, userId} = req.body;
     const spotId = parseInt(req.params.id, 10);
     let spot = await spotService.getSpotByPk(spotId);
 
-    if (spot) {
+    if (!spot) {
+        const err = new Error('Spot Entry Failed');
+        err.status = 401;
+        err.title = 'Spot Entry Failed';
+        err.errors = ['The provided informations were invalid.'];
+        return next(err);
+    } else {
         await spotService.updateSpot(spot, req.body)
         spot = await spotService.getSpotByPk(spotId);
-        res.json( spot );
         res.status(200);
+        return res.json( spot );
     }
 }));
 
 //Gets images related to spot ID
-router.get('/:id(\\d+)/images', asyncHandler(async (req,res) => {
+router.get('/:id(\\d+)/images', asyncHandler(async (req, res) => {
     const urlImg = await Image.findAll({
         where: {spotId: req.params.id}
     })
     return res.json(urlImg);
 }));
+
+router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
+    const spotId = parseInt(req.params.id, 10);
+    const spot = await spotService.getSpotByPk(spotId);
+
+    if (spot){
+        await spotService.deleteSpot(spotId);
+        res.status(204).end();
+    }
+
+    return res.json({ spotId });
+  }));
 
 module.exports = router;

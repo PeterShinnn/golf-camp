@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; //useDispatch,
-import { Redirect, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { editCourse } from "../../../store/spot";
 import { getSingleSpot } from "../../../store/spot";
 
-function EditForm() {
-    //const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
-    const spot = useSelector(state => state.course.list);
-    const { id } = useParams();
+function EditForm({ showModal }) {
 
     const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
+    const spot = useSelector(state => state.course.spot);
+    const { id } = useParams();
+
     const [url, setUrl] = useState(spot.Images[0].url);
     const [name, setName] = useState(spot.name);
     const [address, setAddress] = useState(spot.address);
-    const [city, setCity] = useState(spot.city);
-    const [statee, setStatee] = useState(spot.state);
+    const [city, setCity] = useState(spot.city ? spot.city:"");
+    const [state, setStatee] = useState(spot.state);
     const [country, setCountry] = useState(spot.country);
     const [lat, setLat] = useState(spot.lat);
     const [lng, setLng] = useState(spot.lng);
@@ -26,25 +26,31 @@ function EditForm() {
 
     useEffect(() => {
         dispatch(getSingleSpot(id));
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const data = {
+        const courseData = {
             id,
             url,
             name,
             address,
             city,
-            statee,
+            state,
             country,
             lat,
             lng,
             price,
-            userId: sessionUser.id
+            userId: sessionUser.id,
+            imgId: spot.Images[0].id
         }
-        return dispatch(editCourse(data));
+        
+        dispatch(editCourse(courseData)).catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+        });
+        showModal(false);
         //console.log(data);
     };
 
@@ -93,7 +99,7 @@ function EditForm() {
                 State
                 <input
                     type="text"
-                    value={statee}
+                    value={state}
                     onChange={(e) => setStatee(e.target.value)}
                 />
             </label>

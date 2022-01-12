@@ -33,8 +33,17 @@ async function updateSpot(spot, reqBody) {
     });
 }
 
+async function deleteSpot(spotId) {
+    const spot = await Spot.findByPk(spotId);
+    if (!spot) throw new Error('Cannot find item');
+  
+    await spot.destroy({ where: { id: spot.id }});
+    return spot.id;
+  }
+
 module.exports = {
     getAllSpots,
     getSpotByPk,
-    updateSpot
+    updateSpot,
+    deleteSpot
 }

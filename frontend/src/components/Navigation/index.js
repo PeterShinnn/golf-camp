@@ -1,16 +1,19 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../Login/LoginFormModal';
 import SignupFormModal from '../Signup/SignupFormModal';
 import SpotFormModal from '../Spots/SpotFormModal';
+import * as sessionActions from '../../store/session';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
+
   if (sessionUser) {
     sessionLinks = (
       // displays the links when the user is logged in
@@ -28,10 +31,8 @@ function Navigation({ isLoaded }) {
       // displays the links when the user is logged out 
       <>
         <span>
-          <NavLink to="/near" className="navLinks">Near Me</NavLink>
           <NavLink to="/about" className="navLinks">About</NavLink>
-          <NavLink to="/earn" className="navLinks">Earn Birdy</NavLink>
-          <NavLink to="/demo" className="navLinks">Demo</NavLink>
+          <Link to="#" className="navLinks" onClick={()=> dispatch(sessionActions.login({ credential:'demo', password:'password' }))}>Demo</Link>
           <LoginFormModal />
           <SignupFormModal />
           {/* <NavLink to="/signup" className="navLinks">Sign Up</NavLink> */}
