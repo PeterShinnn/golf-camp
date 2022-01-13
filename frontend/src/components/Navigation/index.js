@@ -31,7 +31,7 @@ function Navigation({ isLoaded }) {
       // displays the links when the user is logged out 
       <>
         <span>
-          <NavLink to="/about" className="navLinks">About</NavLink>
+          {/* <NavLink to="/about" className="navLinks">About</NavLink> */}
           <Link to="#" className="navLinks" onClick={()=> dispatch(sessionActions.login({ credential:'demo', password:'password' }))}>Demo</Link>
           <LoginFormModal />
           <SignupFormModal />

@@ -20,7 +20,7 @@ function SpotDetail() {
 
 
   let showBtn;
-  if (spot.userId === sessionUser.id) {
+  if (sessionUser && spot.userId === sessionUser.id) {
     showBtn = (
       <>
         <SpotEditModal />

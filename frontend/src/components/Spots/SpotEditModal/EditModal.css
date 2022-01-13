@@ -39,3 +39,7 @@
     background-color: #4CAF50;
     color: white;
 }
+
+.error-border{
+    border-color: red;
+}
