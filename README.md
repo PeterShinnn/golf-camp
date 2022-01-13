@@ -73,10 +73,21 @@ The frontend of this web application was built with [React](https://reactjs.org/
 ### User Authorization
 User authentication is handled in JavaScript whilst using BCrypt for password hashing. For security, user passwords are hashed before getting saved to the database. When the user logs in, the password they provide are rehashed to see if the match the one with the data base to verify the users credentials.
 
+### Navigating Through the Site
+Whether the user is logged in or not, the user can search a golf course by using the search bar, (cannot search by specific city yet, but future implementation will) in the front page in order to get the courses that are currently in the data base. If you want to view every single spots, then you can just leave the search bar empty and click on it.
+
+[![7.png](https://i.postimg.cc/ry1ZGKYj/7.png)](https://postimg.cc/QVMqhxDK)
+
+### Search Result
+Once the the user clicks the search button on the front page, the user will be "redirected" to the search result page and is able to see all the golf courses that the current database has.
+
 [![2.png](https://i.postimg.cc/QC1MPPfW/2.png)](https://postimg.cc/fSWZSHnw)
 
+### Spot Feature
+The user can click on each spot and it will bring a detail page for that specific spot (In future will implement more styling and being able to add reservation)
 [![3.png](https://i.postimg.cc/PfwNPpdr/3.png)](https://postimg.cc/NLQQn0yW)
 
+If you're the owner of that spot/course then a button will appear on the bottom of the page asking the user whether they want to edit the information or delete the page
 [![4.png](https://i.postimg.cc/xTV8HfdG/4.png)](https://postimg.cc/rzgq2Lxz)
 
 
