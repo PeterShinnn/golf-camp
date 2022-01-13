@@ -7,6 +7,7 @@ import HeaderInfo from "./components/Main/SplashPage";
 import SearchResult from "./components/Search/SearchResult";
 import OwnedSpots from "./components/Spots/OwnedSpot";
 import SpotDetail from "./components/Spots/SpotDetail";
+import Reservation from "./components/Reservation";
 
 import * as sessionActions from "./store/session";
 import Footer from "./components/Main/footer";
@@ -30,6 +31,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/search/:result">
+            <SearchResult/>
+          </Route>
           <Route exact path="/owned">
             <OwnedSpots />
           </Route>
@@ -39,8 +43,8 @@ function App() {
           <Route path="/owned/spot/:id">
             <SpotDetail />
           </Route>
-          <Route path="/search/:result">
-            <SearchResult/>
+          <Route path="/trips">
+            <Reservation/>
           </Route>
           <Route>
             <h2>Page does not exist</h2>

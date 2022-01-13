@@ -1,4 +1,5 @@
 .login-form{
+  font-size: 1.2rem;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -6,9 +7,37 @@
 
 .login-form h2{
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .login-form label{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  text-align: justify;
+}
+
+.login-form input{
+  text-align: center;
+  height: 27px;
+  margin: 3px;
+}
+
+.login-form button{
+  background-color: white;
+  border: 2px solid #4CAF50;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.login-form button:hover{
+  background-color: #4CAF50;
+  color: white;
 }

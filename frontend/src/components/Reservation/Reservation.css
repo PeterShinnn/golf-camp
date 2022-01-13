@@ -1,0 +1,36 @@
+hr{
+    margin: 20px;
+}
+
+.reservation-container{
+    display: grid;
+    grid-template-columns: .3fr .7fr;
+    justify-items: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.reservation-tab{
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid black;
+    padding-right: 70px;
+}
+
+.reservation-item{
+    margin: 10px auto;
+}
+
+.reservation-time-place{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.reservation-time-place h2{
+    margin-top: 5px;
+}
+
+.reservation-course-info h2{
+    margin: 10px 0;
+}

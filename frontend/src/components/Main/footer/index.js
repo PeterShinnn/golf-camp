@@ -14,10 +14,11 @@ function Footer() {
                         </ul>
                     </div>
                 </div>
+                <div className="copyright">
+                    <p>© Copyright 2022 Peter Shin</p>
+                </div>
             </div>
-            <div className="copyright">
-                <p>© Copyright 2022 Peter Shin</p>
-            </div>
+
         </footer>
     );
 }
