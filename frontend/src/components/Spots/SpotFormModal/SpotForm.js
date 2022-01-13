@@ -23,7 +23,7 @@ function SpotForm({ showModal }) {
     useEffect(()=>{
         const error = []
         
-        if(url.length < 5) error.push("Please Enter URL");
+        if(url.length < 5 || url.length < 255) error.push("Please Enter URL");
         if(name.length < 3) error.push("Please enter valid name");
         if(address.length < 4) error.push("Please Enter valid address");
         if(state.length !== 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");

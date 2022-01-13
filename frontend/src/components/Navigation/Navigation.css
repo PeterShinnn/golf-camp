@@ -40,3 +40,35 @@ nav {
 .active{
     color: red;
 }
+
+.logoutBtn{
+    border-color: white;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.logoutBtn i{
+    font-size: 20px;
+}
+
+.profile-dropdown{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-self: end;
+    list-style: none;
+    border: 1px solid black;
+    background-color: white;
+    margin: 10px 10px 0px -1px;
+    padding: 12px;
+    right: 0;
+}
+
+.profile-dropdown li {
+    width: 100%;
+    height: 15px;
+    padding:  6px 5px;
+    white-space: nowrap;
+    text-align: right;
+    color: black;
+}

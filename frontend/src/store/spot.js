@@ -48,7 +48,6 @@ export const getSingleSpot = (id) => async dispatch => {
 }
 
 export const CreateCourse = (payload) => async dispatch => {
-    //console.log(payload);
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         body: JSON.stringify(payload)
@@ -78,7 +77,6 @@ export const editCourse = (payload) => async dispatch => {
             body: JSON.stringify(payload)
         });
         const course = await response.json();
-        console.log(course);
         dispatch(editSpot(course));
         return course
     }
@@ -116,7 +114,6 @@ const courseReducer = (state = initialState, action) => {
             return { ...state, list: state.list, spot: action.course };
         case REMOVE_SPOT:
             newState = { ...state, list: state.list }
-            console.log(newState);
             delete newState[action.spotId]
             return newState;
         default:

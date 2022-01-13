@@ -33,6 +33,9 @@ function App() {
           <Route exact path="/owned">
             <OwnedSpots />
           </Route>
+          <Route exact path="/spot/:id">
+            <SpotDetail />
+          </Route>
           <Route path="/owned/spot/:id">
             <SpotDetail />
           </Route>
@@ -40,7 +43,7 @@ function App() {
             <SearchResult/>
           </Route>
           <Route>
-            <h2 style={{"text-align": "center" }}>Page does not exist</h2>
+            <h2>Page does not exist</h2>
           </Route>
         </Switch>
       )}

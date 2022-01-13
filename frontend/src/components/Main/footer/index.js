@@ -3,9 +3,9 @@ import './Footer.css'
 function Footer() {
     return (
         <footer>
-            <div class="social-container">
-                <div class="social-links">
-                    <div class="peter person">
+            <div className="social-container">
+                <div className="social-links">
+                    <div className="peter person">
                         <h4>Social Links</h4>
                         <ul>
                             <li>
@@ -15,7 +15,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div class="copyright">
+            <div className="copyright">
                 <p>© Copyright 2022 Peter Shin</p>
             </div>
         </footer>

@@ -18,7 +18,6 @@ router.post('/', asyncHandler(async (req, res) => {
 // Edit Image
 router.put('/:id(\\d+)', asyncHandler(async (req,res) => {
     let img = await imgService.getImgByKey(req.body.spotId);
-    console.log(img)
     if (img){
         await imgService.updateImg(img, req.body)
         img = await imgService.getImgByKey(req.body.spotId);

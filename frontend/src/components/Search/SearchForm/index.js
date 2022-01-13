@@ -21,8 +21,6 @@ function SearchForm() {
         //     guestNum
         // }
 
-        //console.log(reservation);
-
         reset();
         history.push({
             pathname: '/search/result',

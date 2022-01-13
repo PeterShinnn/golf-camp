@@ -1,0 +1,37 @@
+.spot-listing{
+    display: flex;
+    flex-direction: column;;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.spot-detail-img{
+    width: 800px;
+    height: auto;
+    margin: 15px;
+}
+
+.spot-detail-content h3{
+    margin: 8px;
+}
+
+.detail-deleteBtn{
+    background-color: white;
+    border: 2px solid red;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.detail-deleteBtn:hover{
+    background-color: red;
+    color: white;
+}

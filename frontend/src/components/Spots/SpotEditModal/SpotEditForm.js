@@ -61,7 +61,6 @@ function EditForm({ showModal }) {
             if (data && data.errors) setErrors(data.errors);
         });
         showModal(false);
-        //console.log(data);
     };
 
     return (

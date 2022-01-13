@@ -1,5 +1,5 @@
 .spot-form{
-  font-size: 1.3rem;;
+  font-size: 1.3rem;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -19,4 +19,37 @@
   text-align: center;
   height: 27px;
   margin: 3px;
+}
+
+.empty-container{
+  display:flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.empty-container h2{
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+.empty-container button{
+  margin: 20px;
+  background-color: #4CAF50; /* Green */
+  border: 2px solid #4CAF50;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.empty-container button:hover {
+  background-color: white;
+  border-color: #4CAF50;
+  color: black;
 }

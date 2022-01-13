@@ -8,7 +8,7 @@ function SpotEditModal() {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Edit</button >
+            <button className="detail-editBtn" onClick={() => setShowModal(true)}>Edit</button >
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <SpotEditForm showModal={setShowModal}/>
