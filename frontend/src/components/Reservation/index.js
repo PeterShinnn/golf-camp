@@ -19,7 +19,7 @@ function Reservation() {
                             <h2>Address: </h2>
                             <h2>Time: </h2>
                         </span>
-                        <div>
+                        <div className="reservation-course-info">
                             <h2>Course Details: </h2>
                             <p>Golf-Coruse-Info for the course you're reservered at</p>
                         </div>
