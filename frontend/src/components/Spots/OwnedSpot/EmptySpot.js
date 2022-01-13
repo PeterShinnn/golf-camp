@@ -9,7 +9,7 @@ function EmptySpot() {
         <>
             <main>
                 <h2>Looks like you're not hosting any spots!</h2>
-                <img src='https://i.kym-cdn.com/entries/icons/facebook/000/026/489/crying.jpg' alt="sad-cat" />
+                <img src='https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' alt="golf-ball" />
                 <button onClick={() => setShowModal(true)}>Host a Spot Here</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
