@@ -13,6 +13,35 @@ Golf camp is a website that gathers all the famous golf courses and the user can
 
 Golf camp is a clone of another web application called [Hipcamp](https://www.hipcamp.com/en-US), but with my own twist. This website application is a **Golf spot reservation (future implemenetation) and hosting your own golf course** to help you make money and even find a tee time to play golf! 
 
+# Local Installation
+
+The project requires Node.js, NPM, and PostgreSQL. It can be installed locally by downloading the repo, creating a PostgreSQL database user with database creation authority, a PostgreSQL database, then saving the database credentials to a .env file in the root directory based on the provided .env.example file.
+
+Then, run the following in the root directory in order to install the necessary dependencies and begin running To Golf-Camp on a local server:
+
+First change directory to backend and use 
+```
+npm install
+```
+along with going into the frontend directory to also install packages.
+
+Migrate and run the seeder files for the database using:
+```
+npx dotenv sequelize db:create
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all
+```
+Once all the tables and seeder file has been added to the data, you can run this command to run the application locally on your computer. (on both backend & frontend)
+```
+npm start
+```
+
+From there, a new account can be created and used to sign in.
+
+[![5.png](https://i.postimg.cc/7YSzJ45F/5.png)](https://postimg.cc/Ln65GrBD)
+
+[![6.png](https://i.postimg.cc/7ZD2gR7f/6.png)](https://postimg.cc/hfyvnp2B)
+
 ## Overall Structure
 
 ### Back End
@@ -43,10 +72,6 @@ The frontend of this web application was built with [React](https://reactjs.org/
 
 ### User Authorization
 User authentication is handled in JavaScript whilst using BCrypt for password hashing. For security, user passwords are hashed before getting saved to the database. When the user logs in, the password they provide are rehashed to see if the match the one with the data base to verify the users credentials.
-
-[![5.png](https://i.postimg.cc/7YSzJ45F/5.png)](https://postimg.cc/Ln65GrBD)
-
-[![6.png](https://i.postimg.cc/7ZD2gR7f/6.png)](https://postimg.cc/hfyvnp2B)
 
 [![2.png](https://i.postimg.cc/QC1MPPfW/2.png)](https://postimg.cc/fSWZSHnw)
 
