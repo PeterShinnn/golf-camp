@@ -9,6 +9,7 @@ import OwnedSpots from "./components/Spots/OwnedSpot";
 import SpotDetail from "./components/Spots/SpotDetail";
 
 import * as sessionActions from "./store/session";
+import Footer from "./components/Main/footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,8 +39,12 @@ function App() {
           <Route path="/search/:result">
             <SearchResult/>
           </Route>
+          <Route>
+            <h2 style={{"text-align": "center" }}>Page does not exist</h2>
+          </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

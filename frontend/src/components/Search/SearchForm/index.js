@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import DatePicker from 'react-date-picker';
 import IMAGES from "../../../images";
@@ -43,7 +43,7 @@ function SearchForm() {
                 <div className="form-item">
                     <label>WHERE TO?</label>
                     <span className="search-box">
-                        <i className="fas fa-search"></i>
+                        <i className="fas fa-search srchIcon"></i>
                         <input className="form-inputs"
                             type="text"
                             name="location"
@@ -53,10 +53,12 @@ function SearchForm() {
                         />
                     </span>
                 </div>
+
                 <div className="form-item">
                     <label>DATES</label>
                     <DatePicker className="form-inputs" value={startDate} onChange={(date) => setStartDate(date)} />
                 </div>
+
                 <div className="form-item">
                     <label>GUESTS </label>
                     <select className="form-inputs" value={guestNum} onChange={(e) => setGuestNum(e.target.value)}>
@@ -66,6 +68,7 @@ function SearchForm() {
                         <option>4</option>
                     </select>
                 </div>
+
                 <button className="formSubmitBtn" type="submit"><i className="fas fa-search submitBtn"></i></button>
             </form>
             <div className="search-splash">

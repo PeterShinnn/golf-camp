@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; //useDispatch,
 import { Redirect, useHistory } from "react-router-dom";
 import { CreateCourse } from "../../../store/spot";
+import './SpotForm.css';
 
 function SpotForm({ showModal }) {
 
@@ -18,6 +19,19 @@ function SpotForm({ showModal }) {
     const [lng, setLng] = useState(0);
     const [price, setPrice] = useState(0.00);
     const [errors, setErrors] = useState([]);
+
+    useEffect(()=>{
+        const error = []
+        
+        if(url.length < 5) error.push("Please Enter URL");
+        if(name.length < 3) error.push("Please enter valid name");
+        if(address.length < 4) error.push("Please Enter valid address");
+        if(state.length != 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
+        if(city.length < 3) error.push("Please enter valid city name");
+        if(country.length < 4) error.push("Please enter a valid country name");
+
+        setErrors(error);
+    }, [url,name,address,city,state,country])
 
     if (!sessionUser) return <Redirect to="/" />;
 
@@ -48,65 +62,71 @@ function SpotForm({ showModal }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
+        <form className="spot-form" onSubmit={handleSubmit}>
+            {/* <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
+            </ul> */}
             <label>
-                Image Url
+                Image Url:
                 <input
                     type="text"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
+                    placeholder="Image URL (Required)"
                     required
                 />
             </label>
             <label>
-                Name
+                Name:
                 <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    placeholder="Name (Required)"
                     required
                 />
             </label>
             <label>
-                Address
+                Address:
                 <input
                     type="text"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
+                    placeholder="Address (Required)"
                     required
                 />
             </label>
             <label>
-                City
+                City: 
                 <input
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
+                    placeholder="City (Required)"
                     required
                 />
             </label>
             <label>
-                State
+                State: 
                 <input
                     type="text"
                     value={state}
-                    onChange={(e) => setStatee(e.target.value)}
+                    onChange={(e) => setStatee(e.target.value.toUpperCase())}
+                    placeholder="State (e.g CA | NY | TX)"
                 />
             </label>
             <label>
-                Country
+                Country: 
                 <input
                     type="text"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
+                    placeholder="Country (Required)"
                     required
                 />
             </label>
             <label>
-                Latitude
+                Latitude: 
                 <input
                     type="number"
                     value={lat}
@@ -114,7 +134,7 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                Longitude
+                Longitude: 
                 <input
                     type="number"
                     value={lng}
@@ -122,14 +142,15 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                Price
+                Price: 
                 <input
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    placeholder="Price"
                 />
             </label>
-            <button type="submit">Host Spot</button>
+            <button type="submit" disabled={errors.length ? true:false}>Host Spot</button>
         </form>
     );
 }
