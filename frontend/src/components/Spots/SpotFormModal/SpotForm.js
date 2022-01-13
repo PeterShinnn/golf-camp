@@ -20,18 +20,18 @@ function SpotForm({ showModal }) {
     const [price, setPrice] = useState(0.00);
     const [errors, setErrors] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         const error = []
-        
-        if(url.length < 5 || url.length > 255) error.push("Please enter a valid URL");
-        if(name.length < 3) error.push("Please enter valid name");
-        if(address.length < 4) error.push("Please Enter valid address");
-        if(state.length !== 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
-        if(city.length < 3) error.push("Please enter valid city name");
-        if(country.length < 4) error.push("Please enter a valid country name");
+
+        if (url.length < 5 || url.length > 255) error.push("Please enter a valid URL");
+        if (name.length < 3) error.push("Please enter valid name");
+        if (address.length < 4) error.push("Please Enter valid address");
+        if (state.length !== 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
+        if (city.length < 3) error.push("Please enter valid city name");
+        if (country.length < 4) error.push("Please enter a valid country name");
 
         setErrors(error);
-    }, [url,name,address,city,state,country])
+    }, [url, name, address, city, state, country])
 
     if (!sessionUser) return <Redirect to="/" />;
 
@@ -50,15 +50,14 @@ function SpotForm({ showModal }) {
             price,
             userId: sessionUser.id
         }
-        
+
         dispatch(CreateCourse(courseData))
+            .then(showModal(false))
+            .then(history.push('/owned'))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
-        
-        showModal(false);
-        history.push('/owned');
     };
 
     return (
@@ -98,7 +97,7 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                City: 
+                City:
                 <input
                     type="text"
                     value={city}
@@ -108,7 +107,7 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                State: 
+                State:
                 <input
                     type="text"
                     value={state}
@@ -117,7 +116,7 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                Country: 
+                Country:
                 <input
                     type="text"
                     value={country}
@@ -127,7 +126,7 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                Latitude: 
+                Latitude:
                 <input
                     type="number"
                     value={lat}
@@ -135,7 +134,7 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                Longitude: 
+                Longitude:
                 <input
                     type="number"
                     value={lng}
@@ -143,7 +142,7 @@ function SpotForm({ showModal }) {
                 />
             </label>
             <label>
-                Price: 
+                Price:
                 <input
                     type="number"
                     value={price}
@@ -151,7 +150,7 @@ function SpotForm({ showModal }) {
                     placeholder="Price"
                 />
             </label>
-            <button type="submit" disabled={errors.length ? true:false}>Host Spot</button>
+            <button type="submit" disabled={errors.length ? true : false}>Host Spot</button>
         </form>
     );
 }

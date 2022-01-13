@@ -15,7 +15,7 @@ function EditForm({ showModal }) {
     const [url, setUrl] = useState(spot.Images[0].url);
     const [name, setName] = useState(spot.name);
     const [address, setAddress] = useState(spot.address);
-    const [city, setCity] = useState(spot.city ? spot.city:"");
+    const [city, setCity] = useState(spot.city ? spot.city : "");
     const [state, setStatee] = useState(spot.state);
     const [country, setCountry] = useState(spot.country);
     const [lat, setLat] = useState(spot.lat);
@@ -26,16 +26,16 @@ function EditForm({ showModal }) {
     useEffect(() => {
         dispatch(getSingleSpot(id));
         const error = []
-        
-        if(url.length < 5) error.push("Please Enter URL");
-        if(name.length < 3) error.push("Please enter valid name");
-        if(address.length < 4) error.push("Please Enter valid address");
-        if(state.length !== 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
-        if(city.length < 3) error.push("Please enter valid city name");
-        if(country.length < 4) error.push("Please enter a valid country name");
+
+        if (url.length < 5) error.push("Please Enter URL");
+        if (name.length < 3) error.push("Please enter valid name");
+        if (address.length < 4) error.push("Please Enter valid address");
+        if (state.length !== 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
+        if (city.length < 3) error.push("Please enter valid city name");
+        if (country.length < 4) error.push("Please enter a valid country name");
 
         setErrors(error);
-    }, [dispatch, id,url,name,address,city,state,country]);
+    }, [dispatch, id, url, name, address, city, state, country]);
 
 
     const handleSubmit = (e) => {
@@ -55,12 +55,13 @@ function EditForm({ showModal }) {
             userId: sessionUser.id,
             imgId: spot.Images[0].id
         }
-        
-        dispatch(editCourse(courseData)).catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-        });
-        showModal(false);
+
+        dispatch(editCourse(courseData))
+            .then(showModal(false))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
     };
 
     return (
@@ -152,7 +153,7 @@ function EditForm({ showModal }) {
                     placeholder="Price"
                 />
             </label>
-            <button type="submit" disabled={errors.length ? true:false}>Edit</button>
+            <button type="submit" disabled={errors.length ? true : false}>Edit</button>
         </form>
     );
 }
