@@ -44,9 +44,9 @@ The frontend of this web application was built with [React](https://reactjs.org/
 ### User Authorization
 User authentication is handled in JavaScript whilst using BCrypt for password hashing. For security, user passwords are hashed before getting saved to the database. When the user logs in, the password they provide are rehashed to see if the match the one with the data base to verify the users credentials.
 
-[![5.png](https://i.postimg.cc/SKxJsgxw/5.png)](https://postimg.cc/bZ4zVHbT)
+[![5.png](https://i.postimg.cc/7YSzJ45F/5.png)](https://postimg.cc/Ln65GrBD)
 
-[![6.png](https://i.postimg.cc/7LtbTSCb/6.png)](https://postimg.cc/GBYbW8x1)
+[![6.png](https://i.postimg.cc/7ZD2gR7f/6.png)](https://postimg.cc/hfyvnp2B)
 
 [![2.png](https://i.postimg.cc/QC1MPPfW/2.png)](https://postimg.cc/fSWZSHnw)
 
