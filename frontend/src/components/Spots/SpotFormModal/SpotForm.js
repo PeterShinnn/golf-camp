@@ -26,7 +26,7 @@ function SpotForm({ showModal }) {
         if(url.length < 5) error.push("Please Enter URL");
         if(name.length < 3) error.push("Please enter valid name");
         if(address.length < 4) error.push("Please Enter valid address");
-        if(state.length != 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
+        if(state.length !== 0 && (state.length < 2 || state.length >= 3)) error.push("Please Enter a valid State Abbreviation");
         if(city.length < 3) error.push("Please enter valid city name");
         if(country.length < 4) error.push("Please enter a valid country name");
 
@@ -66,6 +66,7 @@ function SpotForm({ showModal }) {
             {/* <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul> */}
+            <h2>Add Spot</h2>
             <label>
                 Image Url:
                 <input
