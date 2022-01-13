@@ -1,33 +1,14 @@
 .golf-form{
-    display: flex;
-    justify-items: center;
-    align-items: center;
-}
-
-.search-splash{
-    padding: 40px 0;
-}
-
-.search-splash-img{
-    height: auto;
-    max-width: 80vw;
-    border-radius: 25px;
-}
-
-.form-div{
-    position: relative;
-}
-
-.golf-form{
-    display: grid;
+    display: flex;;
     position: absolute;
-    grid-template-columns: .9fr .9fr .9fr .1fr;
     border: 1px solid rgb(229, 234, 223);
-    background-color: rgb(243, 242, 239);
+    background-color: white;
     box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px 0px;
     border-radius: 40px;
     padding: 20px;
-    align-items: center;
+    height: 70px;
+    align-items:flex-start;
+    justify-content:space-evenly;
     top: 40px;
     width: 80%;
     left: 50%;
@@ -37,22 +18,47 @@
 .form-item{
     display: flex;
     flex-direction: column;
-    margin: 10px;
 }
 
+.form-div{
+    position: relative;
+}
+
+.srchIcon{
+    position: absolute;
+    margin-top: 21px;
+    margin-left: 195px;
+}
+
+.search-splash-img{
+    height: auto;
+    max-width: 80vw;
+    border-radius: 25px;
+}
+
+
 .form-inputs{
+    margin-top: 10px;
+    width: 220px;
+    height: 35px;
+    border-radius: 15px;
     background-color: white;
 }
 
-.formSubmitBtn{
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: aquamarine;
-    margin-left: 10px;
+.submitBtn{
+    grid-area: btn;
+    color: white;
 }
 
+.search-splash{
+    padding: 40px 0;
+}
 
-.submitBtn{
-    color: white;
+.formSubmitBtn{
+    margin-left: 5px;
+    margin-top: 9px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: aquamarine;
 }

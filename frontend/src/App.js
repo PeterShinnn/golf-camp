@@ -39,6 +39,9 @@ function App() {
           <Route path="/search/:result">
             <SearchResult/>
           </Route>
+          <Route>
+            <h2 style={{"text-align": "center" }}>Page does not exist</h2>
+          </Route>
         </Switch>
       )}
       <Footer />
