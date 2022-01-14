@@ -19,11 +19,11 @@ The project requires Node.js, NPM, and PostgreSQL. It can be installed locally b
 
 Then, run the following in the root directory in order to install the necessary dependencies and begin running To Golf-Camp on a local server:
 
-First change directory to backend and use 
+First change directory to **backend** and use 
 ```
 npm install
 ```
-along with going into the frontend directory to also install packages.
+along with going into the **frontend** directory to also install packages.
 
 Migrate and run the seeder files for the database using:
 ```
