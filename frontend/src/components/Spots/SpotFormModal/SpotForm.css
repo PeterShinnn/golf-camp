@@ -53,3 +53,11 @@
   border-color: #4CAF50;
   color: black;
 }
+
+.error-border{
+  border-color: red;
+}
+
+.error-list{
+  font-size: 12px;
+}

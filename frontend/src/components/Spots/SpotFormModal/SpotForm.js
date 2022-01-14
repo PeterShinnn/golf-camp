@@ -62,9 +62,9 @@ function SpotForm({ showModal }) {
 
     return (
         <form className="spot-form" onSubmit={handleSubmit}>
-            {/* <ul>
+            <ul className="error-list">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul> */}
+            </ul>
             <h2>Add Spot</h2>
             <label>
                 Image Url:
@@ -118,6 +118,7 @@ function SpotForm({ showModal }) {
             <label>
                 Country:
                 <input
+                    className="country-input"
                     type="text"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
