@@ -113,8 +113,9 @@ const courseReducer = (state = initialState, action) => {
         case EDIT_SPOT:
             return { ...state, list: state.list, spot: action.course };
         case REMOVE_SPOT:
-            newState = { ...state, list: state.list }
-            delete newState[action.spotId]
+            newState = { ...state, list: state.list.filter(spot => spot.id !== +action.spotId)}
+            //delete newState[action.spotId]
+            newState.spot = [];
             return newState;
         default:
             return state;
