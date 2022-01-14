@@ -4,8 +4,28 @@
 }
 
 .grid-item{
+    margin: 10px;
     display: flex;
     flex-direction: column;
-    justify-items: center;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 320px;
+    height: 320px;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.grid-item h2{
+    color: black;
+    margin-top: 25px;
+}
+
+
+.grid-item h2:hover{
+    color: green;
+}
+
+.grid-item h2:active{
+    color: blue;
 }

@@ -19,24 +19,7 @@ function OwnedSpots() {
     }, [dispatch]);
 
     if (!sessionUser) return <Redirect to="/" />
-    // if (courses.length) {
-    //     spotLoaded = (
-    //         <>
-    //             {courses?.map((course) => (
-    //                 <NavLink key={course.id} className="owned-grid-item" to={`/owned/spot/${course.id}`}>
-    //                     <ResultBox Course={course} />
-    //                 </NavLink>
-    //             ))}
-    //         </>
-    //     )
-    // } else {
-    //     spotLoaded = (
-    //         <>
-    //             <EmptySpot loaded={courses.length} />
-    //         </>
-    //     )
-    // }
-
+    
     return (
         <main>
             <EmptySpot loaded={courses.length} />
